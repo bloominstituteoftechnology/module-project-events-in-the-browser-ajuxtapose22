@@ -69,6 +69,7 @@ function moduleProject2() {
     allSquares[randomInt].appendChild(mosquito)
   })
 
+
   document.addEventListener('keydown', evt => {
     // 👉 TASK 3 - Use the arrow keys to highlight a new square 👈
     console.log(evt);
@@ -76,6 +77,7 @@ function moduleProject2() {
       let ArrowDown = evt.key === keys.down;
       let ArrowLeft = evt.key === keys.left;
       let ArrowRight = evt.key === keys.right;
+      let isSpaceBar = evt.key === keys.space;
 
       let targeted = document.querySelector('.targeted');
 
@@ -104,8 +106,14 @@ function moduleProject2() {
       }
 
     // 👉 TASK 4 - Use the space bar to exterminate a mosquito 👈
-
-      let spaceBar = evt.key === keys.space;
+      else if (isSpaceBar){
+        let mosquito = targeted.firstChild;
+        
+        if(mosquito && mosquito.dataset.status === 'alive') {
+          mosquito.dataset.status = 'dead';
+          mosquito.parentElement.style.backgroundColor = 'red';
+        }
+      }
 
 
     // 👉 TASK 5 - End the game 👈
