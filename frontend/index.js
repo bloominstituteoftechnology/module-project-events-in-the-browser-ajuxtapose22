@@ -72,7 +72,6 @@ function moduleProject2() {
 
   document.addEventListener('keydown', evt => {
     // 👉 TASK 3 - Use the arrow keys to highlight a new square 👈
-    console.log(evt);
       let ArrowUp = evt.key === keys.up;
       let ArrowDown = evt.key === keys.down;
       let ArrowLeft = evt.key === keys.left;
@@ -113,10 +112,28 @@ function moduleProject2() {
           mosquito.dataset.status = 'dead';
           mosquito.parentElement.style.backgroundColor = 'red';
         }
+        // 👉 TASK 5 - End the game 👈
+      let liveMosquitoes = document.querySelectorAll('[data-status=alive');
+      if (!liveMosquitoes.length){
+        let elapsed = getTimeElapsed ()
+         document.querySelector('p.info').textContent = 
+         `Extermination completed in ${elapsed / 1000} seconds!`
+        
+        const header = document.querySelector('h2');
+        const restartBtn = document.createElement('button'); 
+        restartBtn.textContent = "Restart";
+        restartBtn.addEventListener('click', () => {
+          location.reload();
+        })
+
+        header.parentNode.insertBefore(restartBtn, header.nextSibling);
+        restartBtn.focus(); 
+        
+        }
+      
       }
 
 
-    // 👉 TASK 5 - End the game 👈
 
 
   })
